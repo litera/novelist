@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace Web
+namespace Novelist.Web
 {
 	public class FilterConfig
 	{

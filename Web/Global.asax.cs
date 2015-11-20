@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 
-namespace Web
+namespace Novelist.Web
 {
 	public class Global : HttpApplication
 	{

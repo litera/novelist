@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Optimization;
 
-namespace Web.General
+namespace Novelist.Web.General
 {
 	/// <summary>
 	/// Provides functionality to transform relative URLs in CSS to abosulte for minification services.
