@@ -70,12 +70,20 @@ header h1 {
   line-height: 56px;
   color: #a7a37e;
 }
-header h1 sup {
-  position: static;
-  vertical-align: super;
-  font-size: 40%;
-  font-weight: 700;
-  color: #efecca;
+header h1:before {
+  display: inline-block;
+  content: "N.";
+  border: 3px solid #a7a37e;
+  margin-right: .25em;
+  border-radius: 50%;
+  font-size: .5em;
+  width: 2rem;
+  line-height: 2rem;
+  vertical-align: .5rem;
+}
+header h1 span {
+  margin-left: 1px;
+  color: #c7c397;
 }
 main {
   width: 900px;

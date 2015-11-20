@@ -55,12 +55,21 @@ header {
 		line-height: @textLeading * 2;
 		color: @primaryDark;
 
-		sup {
-			position: static;
-			vertical-align: super;
-			font-size: 40%;
-			font-weight: 700;
-			color: @secondary;
+		&:before {
+			display: inline-block;
+			content: "N.";
+			border: 3px solid @primaryDark;
+			margin-right: .25em;
+			border-radius: 50%;
+			font-size: .5em;
+			width: 2rem;
+			line-height: 2rem;
+			vertical-align: .5rem;
+		}
+
+		span {
+			margin-left: 1px;
+			color: mix(@primary, @primaryDark);
 		}
 	}
 }
