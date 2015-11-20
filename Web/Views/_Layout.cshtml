@@ -5,18 +5,22 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 	<title>@ViewBag.Title - Novelist</title>
-	@*Default styles*@
+	@* Default styles *@
 	@Styles.Render("~/bundles/css/general")
-	@*Additional page styles*@
+	@* Additional per-page styles *@
 	@RenderSection("Styles", false)
 </head>
 <body>
-	<main>
+	<header>
+		<h1>Novelist.<sup>on AngularJS</sup></h1>
+	</header>
+	<section id="container">
+		@* Partials should contain aside and main elements here *@
 		@RenderBody()
-	</main>
-	@*Default scripts*@
+	</section>
+	@* Default scripts *@
 	@Scripts.Render("~/bundle/js/general")
-	@*Additional page scripts*@
+	@* Additional page scripts *@
 	@RenderSection("Scripts", false)
 </body>
 </html>

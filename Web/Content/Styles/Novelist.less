@@ -1,37 +1,71 @@
 ﻿@import url(https://fonts.googleapis.com/css?family=Exo:300,400,500,600,700,800,900,300italic,400italic,500italic,600italic,700italic,800italic,900italic|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext);
 
-@import (less) "../normalize.css";
+@import (css) "../normalize.css";
 @import "Mixins";
 @import "Variables";
 
 body {
-	font-family: "Noticia Text", sans-serif;
-	font-size: @size;
+	font-family: @textFamily;
+	font-size: @textSize;
 	font-weight: 400;
-	line-height: @leading;
-	color: @color;
+	line-height: @textLeading;
+	color: @textColor;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Exo", sans-serif;
-	margin: @leading * 2 0 @leading 0;
+	font-family: @headingFamily;
+	margin: @textLeading 0 @textLeading * .5 0;
 	max-width: 75%;
 }
 
-// generate headers using recursive mixin
+// #region Generate headers using recursive mixin
 .genHeaders(@i) when (@i > 0) {
 	.genHeaders((@i - 1));
 
 	h@{i} {
-		font-size: @size * 3 - @i * 4px;
+		font-size: @textSize * 3 - @i * 4px;
 		font-weight: 1000 - @i * 100;
-		line-height: (@size * 3 - @i * 4px) + 4px;
+		line-height: (@textSize * 3 - @i * 4px) + 4px;
 	}
 }
 .genHeaders(6);
 
+p {
+	margin: @textLeading 0;
+}
+
+a {
+	color: @linkColor;
+}
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: @primary;
+	box-shadow: 0 1px 10px @primaryDark;
+	padding: 0 @textLeading;
+	font-style: italic;
+	color: @primaryDark;
+
+	h1 {
+		display: inline;
+		font-size: 42px;
+		line-height: @textLeading * 2;
+		color: @primaryDark;
+
+		sup {
+			position: static;
+			vertical-align: super;
+			font-size: 40%;
+			font-weight: 700;
+			color: @secondary;
+		}
+	}
+}
 
 main {
 	width: 900px;
-	margin: 0 auto;
+	margin: @textLeading * 3 auto;
 }
