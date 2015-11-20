@@ -13,6 +13,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{DB32B044-BF89-4CFE-974E-17578D3C1898}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{9851C1BA-13C8-4D3B-B2CB-ECDE9214B977}"
+	ProjectSection(SolutionItems) = preProject
+		Database\00 Backup Data.sql = Database\00 Backup Data.sql
+		Database\01 Drop Model.sql = Database\01 Drop Model.sql
+		Database\02 Create Model.sql = Database\02 Create Model.sql
+		Database\03 Types.sql = Database\03 Types.sql
+		Database\04 Functions.sql = Database\04 Functions.sql
+		Database\05 Procedures.sql = Database\05 Procedures.sql
+		Database\06 Static Data.sql = Database\06 Static Data.sql
+		Database\07 Test Data.sql = Database\07 Test Data.sql
+		Database\08 Restore Data.sql = Database\08 Restore Data.sql
+		Database\Local DB - Recreate.cmd = Database\Local DB - Recreate.cmd
+		Database\Local DB - Restore.cmd = Database\Local DB - Restore.cmd
+		Database\Local DB - Upgrade.cmd = Database\Local DB - Upgrade.cmd
+		Database\Prod DB - Upgrade.cmd = Database\Prod DB - Upgrade.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
