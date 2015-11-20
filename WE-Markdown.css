@@ -1,0 +1,56 @@
+﻿body
+{
+	font-family: Merriweather, serif;
+	font-size: 11pt;
+	line-height: 1.5em;
+	color: #333;
+	margin: 1.5em;
+}
+ 
+p {
+	margin: 1.5em 0;
+	padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: normal;
+}
+ 
+h1 { font-size: 20pt; letter-spacing: -.02em; }
+h2 { font-size: 18pt; letter-spacing: -.02em; }
+h3 { font-size: 16pt; letter-spacing: -.015em; }
+h4 { font-size: 14pt; }
+ 
+code, pre, kbd {
+	font-family: Consolas, monospace;
+	background-color: #eee;
+	line-height: 1.2em;
+}
+ 
+code, kbd {
+	padding: 0 .25em;
+}
+ 
+kbd {
+	display: inline-block;
+	margin: -2px 0;
+	border-width: 1px;
+	border-color: #ddd #bbb #999 #ddd;
+	border-style: solid;
+}
+ 
+pre {
+	padding: .25em .5em;
+ 
+	code {
+		padding: 0;
+	}
+}
+ 
+blockquote {
+	margin: 1.6em 0;
+	border-left: 5px solid #ddd;
+	padding: 0 1.6em;
+	font-style: italic;
+	color: #666;
+}
