@@ -19,8 +19,8 @@ print 'Creating table Post';
 			identity
 			primary key,
 		Title nvarchar(200) not null,
-		Description nvarchar(max) not null,
-		Author int not null
+		Details nvarchar(max) not null,
+		AuthorId int not null
 			references dbo.[User](Id),
 		CreatedOn datetime2 not null
 			default sysdatetime()

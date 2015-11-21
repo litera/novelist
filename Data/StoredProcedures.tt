@@ -1,0 +1,276 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".generated.cs" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+using System;
+using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.Data; 
+using System.Data.SqlClient; 
+using Microsoft.SqlServer.Server;
+using NPoco;
+
+namespace Novelist.Data
+{
+	#region Generated code 
+
+	/// <summary>Defines all strongly typed methods for calling stored procedures.</summary>
+	[GeneratedCode("TextTemplatingFileGenerator", "10")] // this attribute makes code analysis to skip this class
+	internal static class StoredProcedures
+	{
+		#region Utility method 
+
+		private static IEnumerable<SqlDataRecord> CreateDataRecords<T>(IEnumerable<T> items, SqlMetaData metaData)
+		{
+			SqlDataRecord record = new SqlDataRecord(metaData);
+			foreach (T item in items)
+			{
+				record.SetValue(0, item);
+				yield return record;    
+			}
+		} 
+		  
+		#endregion 
+
+<#
+	ParseData();
+	Generate();
+#>
+	}   
+	 
+	#endregion  
+}
+
+<#+ // Variables 
+
+	string connectionString = "Data Source=(local);Initial Catalog=Novelist;Integrated Security=true";
+
+	string command = @"
+				select	substring(sp.name, 0, patindex('%[_]%', sp.name)) as ClassName,
+						substring(sp.name, patindex('%[_]%', sp.name) + 1, len(sp.name)) as ProcName,
+						right(p.name, len(p.name) - 1) as ParamName,
+						isnull(ss.name + '.', '') + t.name as ParamType,
+						p.max_length as ParamLength,
+						p.is_output as ParamOut,
+						t.is_table_type as IsCollection,
+						c.name as ColumnName,
+						tt1.name as ColumnType,
+						c.max_length as ColumnLength
+				from sys.procedures sp
+					left join sys.parameters p
+						left join sys.types t
+							left join sys.table_types tt
+								join sys.columns c
+									join sys.types tt1
+									on tt1.system_type_id = c.system_type_id
+								on c.object_id = tt.type_table_object_id
+								join sys.schemas ss
+								on ss.schema_id = tt.schema_id
+							on tt.system_type_id = t.system_type_id
+						on t.system_type_id = p.system_type_id
+					on p.object_id = sp.object_id
+					left join sys.extended_properties ex
+					on ex.major_id = sp.object_id
+				where
+					isnull(t.name, 'dummy') <> 'sysname' and
+					sp.name like '%[_]%' and
+					len(isnull(p.name, 'dummy')) > 0 and
+					ex.major_id is null
+				order by ClassName, ProcName, p.parameter_id, c.column_id";
+
+	Dictionary<string, ParameterTypeMap> typeMapper = new Dictionary<string, ParameterTypeMap> {
+		{"bit", new ParameterTypeMap { ClrType = "bool?", DbType = "SqlDbType.Bit", LengthDivisor = null }},
+		{"tinyint", new ParameterTypeMap { ClrType = "byte?", DbType = "SqlDbType.TinyInt", LengthDivisor = null }},
+		{"smallint", new ParameterTypeMap { ClrType = "short?", DbType = "SqlDbType.SmallInt", LengthDivisor = null }},
+		{"int", new ParameterTypeMap { ClrType = "int?", DbType = "SqlDbType.Int", LengthDivisor = null }},
+		{"bigint", new ParameterTypeMap { ClrType = "long?", DbType = "SqlDbType.BigInt", LengthDivisor = null }},
+		{"varchar", new ParameterTypeMap { ClrType = "string", DbType = "SqlDbType.VarChar", LengthDivisor = 1 }},
+		{"nvarchar", new ParameterTypeMap { ClrType = "string", DbType = "SqlDbType.NVarChar", LengthDivisor = 2 }},
+		{"char", new ParameterTypeMap { ClrType ="string" , DbType = "SqlDbType.Char", LengthDivisor = 1 }},
+		{"nchar", new ParameterTypeMap { ClrType = "string", DbType = "SqlDbType.NChar", LengthDivisor = 2 }},
+		{"date", new ParameterTypeMap { ClrType = "DateTime?", DbType = "SqlDbType.Date", LengthDivisor = null }},
+		{"datetime", new ParameterTypeMap { ClrType = "DateTime?", DbType = "SqlDbType.DateTime", LengthDivisor = null }},
+		{"datetime2", new ParameterTypeMap { ClrType = "DateTime?", DbType = "SqlDbType.DateTime2", LengthDivisor = null }},
+		{"smalldatetime", new ParameterTypeMap { ClrType = "DateTime?", DbType = "SqlDbType.SmallDateTime", LengthDivisor = null }},
+		{"time", new ParameterTypeMap { ClrType = "TimeSpan?", DbType = "SqlDbType.Time", LengthDivisor = null }},
+		{"varbinary", new ParameterTypeMap { ClrType = "byte[]", DbType = "SqlDbType.VarBinary", LengthDivisor = null }},
+		{"money", new ParameterTypeMap { ClrType = "decimal?", DbType = "SqlDbType.Money", LengthDivisor = null }},
+		{"numeric", new ParameterTypeMap { ClrType = "decimal?", DbType = "SqlDbType.Decimal", LengthDivisor = null }},
+		{"decimal", new ParameterTypeMap { ClrType = "decimal?", DbType = "SqlDbType.Decimal", LengthDivisor = null }},
+		{"real", new ParameterTypeMap { ClrType = "float?", DbType = "SqlDbType.Real", LengthDivisor = null }},
+		{"float", new ParameterTypeMap { ClrType = "double?", DbType = "SqlDbType.Float", LengthDivisor = null }},
+		{"uniqueidentifier", new ParameterTypeMap { ClrType = "Guid?", DbType = "SqlDbType.UniqueIdentifier", LengthDivisor = null }}
+	};
+
+	List<ClassGroup> parsedClasses = new List<ClassGroup>();
+#>
+<#+ // Types
+
+	private class ClassGroup
+	{
+		public string Name = string.Empty;
+		public List<Procedure> Procedures = new List<Procedure>();
+	}
+
+	private class Procedure
+	{
+		public string Name = string.Empty;
+		public List<Parameter> Parameters = new List<Parameter>();
+	}
+
+	private class Parameter
+	{
+		public string Name = string.Empty;
+		public string Type = string.Empty;
+		public string ParamType = string.Empty;
+		public int ParamTypeLength = 0;
+		public bool IsOutput = false;
+		public bool IsLengthRequired = false;
+		public bool IsCollection = false;
+		public string CollectionColumnName = string.Empty;
+		public string CollectionColumnType = string.Empty;
+		public int CollectionColumnTypeLength = 0;
+		public bool CollectionIsLengthRequired = false;
+
+		public string AsVariable()
+		{
+			return this.Name[0].ToString().ToLowerInvariant() + Name.Substring(1);
+		}
+	}
+
+	private class ParameterTypeMap
+	{
+		public string ClrType = string.Empty;
+		public string DbType = string.Empty;
+		public int? LengthDivisor = null;
+	}
+#>
+
+<#+ // ParseData
+
+	private void ParseData()
+	{
+		using (var conn = new SqlConnection(connectionString))
+		{
+			using (var comm = new SqlCommand(command, conn))
+			{
+				conn.Open();
+				using (var dr = comm.ExecuteReader())
+				{
+					string className = string.Empty;
+					string procName = string.Empty;
+
+					while(dr.Read())
+					{
+						if (dr["ClassName"].ToString() != className)
+						{
+							className = dr["ClassName"].ToString();
+							procName = string.Empty;
+							
+							parsedClasses.Add(new ClassGroup { Name = className });
+						}
+
+						if (dr["ProcName"].ToString() != procName)
+						{
+							procName = dr["ProcName"].ToString();
+
+							parsedClasses.Last().Procedures.Add(new Procedure { Name = procName });
+						}
+
+						if (dr["ParamName"] != DBNull.Value)
+						{
+							bool isCollection = Convert.ToBoolean(dr["IsCollection"]);
+							string paramType = isCollection ? "int" : dr["ParamType"].ToString();
+							parsedClasses.Last().Procedures.Last().Parameters.Add(new Parameter {
+								Name = dr["ParamName"].ToString(),
+								Type = typeMapper[paramType].ClrType,
+								ParamType = isCollection ? dr["ParamType"].ToString() : typeMapper[paramType].DbType,
+								IsLengthRequired = typeMapper[paramType].LengthDivisor != null,
+								ParamTypeLength = Convert.ToInt32(dr["ParamLength"]) / (typeMapper[paramType].LengthDivisor ?? 1),
+								IsOutput = Convert.ToBoolean(dr["ParamOut"]),
+								IsCollection = isCollection,
+								CollectionColumnName = dr["ColumnName"].ToString(),
+								CollectionColumnType = isCollection ? typeMapper[dr["ColumnType"].ToString()].DbType : string.Empty,
+								CollectionColumnTypeLength = isCollection ? Convert.ToInt32(dr["ColumnLength"]) / (typeMapper[dr["ColumnType"].ToString()].LengthDivisor ?? 1) : -1,
+								CollectionIsLengthRequired = isCollection ? typeMapper[dr["ColumnType"].ToString()].LengthDivisor != null : false
+							});
+						}
+					}
+				}
+			}
+		}
+	}
+#>
+<#+ // Generate
+
+	private void Generate()
+	{
+		foreach (ClassGroup c in parsedClasses)
+		{
+#>
+		#region <#= c.Name #> class
+
+		/// <summary>Defines all <#= c.Name #> related stored procedure calls.</summary>
+		internal static partial class <#= c.Name #>
+		{
+<#+
+			foreach (Procedure sp in c.Procedures)
+			{
+				IList<Parameter> inputParams = sp.Parameters.Where(p => !p.IsOutput).ToList();
+				IList<Parameter> outputParams = sp.Parameters.Where(p => p.IsOutput).ToList();
+				IList<Parameter> listParams = sp.Parameters.Where(p => p.IsCollection).ToList();
+#>
+
+			public static Sql <#= sp.Name #>(<#= string.Join(", ", inputParams.Select(p => string.Format("{0} {1}", p.IsCollection ? string.Format("IEnumerable<{0}>", p.Type) : p.Type, p.AsVariable()))) #><#= outputParams.Count > 0 ? ", " : string.Empty #><#= string.Join(", ", outputParams.Select(p => string.Format("out SqlParameter {0}", p.AsVariable()))) #>)
+			{
+<#+
+				foreach(Parameter p in outputParams)
+				{
+#>
+				<#= p.AsVariable() #> = new SqlParameter("@<#= p.Name #>", <#= p.ParamType #>);
+				<#= p.AsVariable() #>.Direction = ParameterDirection.Output;
+<#+
+					if (p.IsLengthRequired)
+					{
+#>
+				<#= p.AsVariable() #>.Size = <#= p.ParamTypeLength #>;
+
+<#+
+					}
+				}
+
+				foreach(Parameter p in listParams)
+				{
+#>
+				SqlParameter <#= p.AsVariable() #>Records = new SqlParameter("@<#= p.Name #>", SqlDbType.Structured);
+				<#= p.AsVariable() #>Records.TypeName = "<#= p.ParamType #>";
+				<#= p.AsVariable() #>Records.Value = StoredProcedures.CreateDataRecords(<#= p.AsVariable() #>, new SqlMetaData("<#= p.CollectionColumnName #>", <#= p.CollectionColumnType #><#= p.CollectionIsLengthRequired ? ", " + p.CollectionColumnTypeLength : string.Empty #>));
+
+<#+
+				}
+#>
+				Sql result = Sql.Builder.Append(";exec dbo.[<#= c.Name #>_<#= sp.Name #>] <#= string.Join(", ", sp.Parameters.Select(p => string.Format("@{0}{1}", p.Name, p.IsOutput ? " out" : ""))) #>", new {
+					<#= string.Join(",\n\t\t\t\t\t", sp.Parameters.Select(p => string.Format("{0} = {1}{2}", p.Name, p.AsVariable(), p.IsCollection ? "Records" : string.Empty))) #>
+				});
+
+				return result;
+			}
+<#+
+			}
+#>
+		}
+
+		#endregion
+
+<#+
+		}
+	}
+#>
