@@ -1,7 +1,7 @@
 -- Drop all user defined objects in reverse order they were created
 
-print '';
-declare @sql varchar(max);
+print 'Droping model:';
+declare @sql varchar(max) = '';
 
 with types (type, name) as
 (
@@ -14,7 +14,7 @@ with types (type, name) as
 	select 'V', 'view' union all		-- view
 	select 'TT', 'type'					-- table type
 )
-select @sql = isnull(@sql, '') + 'print ''Dropping ' + t.name + ' dbo.[' + coalesce(tt.name, o.name) + ']'';drop ' + t.name + ' dbo.[' + coalesce(tt.name, o.name) + '];'
+select @sql = @sql + 'print ''Dropping ' + t.name + ' dbo.[' + coalesce(tt.name, o.name) + ']'';drop ' + t.name + ' dbo.[' + coalesce(tt.name, o.name) + '];'
 from sys.objects o
 	join types t
 	on (t.type = o.type)

@@ -1,4 +1,4 @@
-print '';
+print 'Functions:';
 
 --print 'Creating function FuncName'
 --go

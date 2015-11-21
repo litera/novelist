@@ -27,7 +27,8 @@ print 'Checking data compatibility between backup and new schema.';
 	select
 		o.name as TableName,
 		c.name as ColumnName,
-		iif(c.is_nullable = 0 and c.is_computed = 0 and d.object_id is null, 1, 0) as IsRequired
+		case when c.is_nullable = 0 and c.is_computed = 0 and d.object_id is null then 1 else 0 end as IsRequired -- SQL Server < 2012
+		-- iif(c.is_nullable = 0 and c.is_computed = 0 and d.object_id is null, 1, 0) as IsRequired -- SQL Server >= 2012
 	into #NewColumns
 	from sys.objects o
 		join sys.columns c
@@ -128,7 +129,7 @@ set @sql = '';
 		print '';
 		exec(@sql);
 		print '';
-		throw 50000, 'Backup data mismatch. Automated data restore is terminated.', 0;
+		raiserror('Backup data mismatch. Automated data restore is terminated.', 10, 1);
 	end
 
 print '';

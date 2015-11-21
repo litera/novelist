@@ -1,4 +1,5 @@
 -- Drop any existing Backup tables
+print 'Backing up';
 
 set nocount on;
 

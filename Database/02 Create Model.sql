@@ -1,4 +1,4 @@
-print '';
+print 'Create Model:';
 
 print 'Creating table User'
 	create table dbo.[User] (
