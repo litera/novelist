@@ -14,6 +14,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: @headingFamily;
+	color: @primaryDark;
 	margin: @textLeading 0 @textLeading * .5 0;
 	max-width: 75%;
 }
@@ -40,20 +41,14 @@ a {
 
 header {
 	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	background-color: @primary;
-	box-shadow: 0 1px 10px @primaryDark;
-	padding: 0 @textLeading;
+	top: @textLeading;
+	left: @textLeading;
 	font-style: italic;
-	color: @primaryDark;
 
 	h1 {
 		display: inline;
 		font-size: 42px;
 		line-height: @textLeading * 2;
-		color: @primaryDark;
 
 		&:before {
 			display: inline-block;
@@ -69,12 +64,31 @@ header {
 
 		span {
 			margin-left: 1px;
-			color: mix(@primary, @primaryDark);
+			color: @primary;
 		}
 	}
 }
 
 main {
-	width: 900px;
+	width: 800px;
 	margin: @textLeading * 3 auto;
+}
+
+article {
+
+	.intro {
+		font-size: @textSize * 1.1;
+		font-weight: bold;
+		text-indent: -@textSize * 1.8;
+
+		&:before {
+			content: "";
+			display: inline-block;
+			width: @textSize * .8;
+			height: @textSize * .8;
+			background-color: @primary;
+			margin: 0 @textSize -1px 0;
+			border-bottom: 1px solid @primaryDark;
+		}
+	}
 }

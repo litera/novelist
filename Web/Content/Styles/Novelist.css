@@ -14,6 +14,7 @@ h4,
 h5,
 h6 {
   font-family: "Exo", sans-serif;
+  color: #a7a37e;
   margin: 28px 0 14px 0;
   max-width: 75%;
 }
@@ -55,20 +56,14 @@ a {
 }
 header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: #e6e2af;
-  box-shadow: 0 1px 10px #a7a37e;
-  padding: 0 28px;
+  top: 28px;
+  left: 28px;
   font-style: italic;
-  color: #a7a37e;
 }
 header h1 {
   display: inline;
   font-size: 42px;
   line-height: 56px;
-  color: #a7a37e;
 }
 header h1:before {
   display: inline-block;
@@ -83,9 +78,23 @@ header h1:before {
 }
 header h1 span {
   margin-left: 1px;
-  color: #c7c397;
+  color: #e6e2af;
 }
 main {
-  width: 900px;
+  width: 800px;
   margin: 84px auto;
+}
+article .intro {
+  font-size: 19.8px;
+  font-weight: bold;
+  text-indent: -32.4px;
+}
+article .intro:before {
+  content: "";
+  display: inline-block;
+  width: 14.4px;
+  height: 14.4px;
+  background-color: #e6e2af;
+  margin: 0 18px -1px 0;
+  border-bottom: 1px solid #a7a37e;
 }

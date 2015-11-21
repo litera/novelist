@@ -30,6 +30,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{98
 		Database\Prod DB - Upgrade.cmd = Database\Prod DB - Upgrade.cmd
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{DD8F9662-DF9C-4A0E-85EA-0F00F162D739}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{7C4E155D-E272-4C28-A6B1-FD6F8CFA07E7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +44,14 @@ Global
 		{DB32B044-BF89-4CFE-974E-17578D3C1898}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB32B044-BF89-4CFE-974E-17578D3C1898}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB32B044-BF89-4CFE-974E-17578D3C1898}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD8F9662-DF9C-4A0E-85EA-0F00F162D739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD8F9662-DF9C-4A0E-85EA-0F00F162D739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD8F9662-DF9C-4A0E-85EA-0F00F162D739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD8F9662-DF9C-4A0E-85EA-0F00F162D739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C4E155D-E272-4C28-A6B1-FD6F8CFA07E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4E155D-E272-4C28-A6B1-FD6F8CFA07E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4E155D-E272-4C28-A6B1-FD6F8CFA07E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4E155D-E272-4C28-A6B1-FD6F8CFA07E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
