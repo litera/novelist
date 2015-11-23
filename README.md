@@ -17,11 +17,13 @@ There are basically **three C# projects** in this solution:
 
 - **Model** which represents defined application model entities and other application-level features
 - **Data** which is our DAL that uses T4 to translate database functionality directly to strong types C# calls used by NPoco micro ORM library, and
-- **Web** that is the actual web application
+- **Web** that is the actual web application including RESTful data API<sup>1</sup>
 
 There is alo an **additional *Database* folder** which acts as the fourth project, but is not. It contains all database creation scripts and automated batch files that recreate, restore or upgrade local database or upgrade production database directly from within Visual Studio development environment.
 
 It also helps keeping database scripts versioned while having these things simple and productive.
+
+> <sup>1</sup> API is designed to be completely RESTful but doesn't implement all HTTP verbs apart from those that are used by the web app.
 
 ### T4 translation (SPs to C#)
 
@@ -34,9 +36,18 @@ In order for this to work as expected all stored procedures that we want parsed 
 Entity_Function
 ```
 
-Where *Entity* may some application model entity (i.e. *Post*) and *Function* is something that we want to do related to this entity or entity set (i.e. *Create*).
-```
-Post_Create
+Where *Entity* is some application model entity (i.e. *Post*) and *Function* is something that we want to do related to this entity or entity set (i.e. *Create*).
+```tsql
+create procedure Post_Create (
+	@Title nvarchar(200),
+	@Details nvarchar(max),
+	@AuthorId int
+)
+as
+...
 ```
 
-All these SPs are then translated to *Entity* classes with *Function* methods (i.e. `Post_Create` will be translated to `Post.Create(strong_type_CLR_parameters_matching_SP_parameters*)`).
+All these SPs are then translated to *Entity* classes with *Function* methods that use strong type C# parameters semantically matching those of the stored procedure.
+```csharp
+Post.Create(string title, string details, int authorId);
+```
