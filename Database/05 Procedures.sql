@@ -22,7 +22,7 @@ as
 begin
 	select
 		-- post
-		p.Id, p.Title, p.Details, p.CreatedOn,
+		p.Id, p.Title, p.Content, p.CreatedOn,
 		-- user
 		u.Id, u.Name, u.Email
 	from dbo.Post p
@@ -43,7 +43,7 @@ as
 begin
 	select
 		-- post
-		p.Id, p.Title, p.Details, p.CreatedOn,
+		p.Id, p.Title, p.Content, p.CreatedOn,
 		-- user
 		u.Id, u.Name, u.Email
 	from dbo.Post p
@@ -61,15 +61,15 @@ go
 create procedure dbo.Post_Create (
 	@AuthorId int,
 	@Title nvarchar(200),
-	@Details nvarchar(max)
+	@Content nvarchar(max)
 )
 as
 begin
 	set @Title = dbo.FullTrim(@Title);
-	set @Details = dbo.FullTrim(@Details);
+	set @Content = dbo.FullTrim(@Content);
 
-	insert dbo.Post (Title, Details, AuthorId)
-	values (@Title, @Details, @AuthorId);
+	insert dbo.Post (Title, Content, AuthorId)
+	values (@Title, @Content, @AuthorId);
 
 	declare @postId int = scope_identity();
 

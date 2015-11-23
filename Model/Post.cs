@@ -26,13 +26,13 @@ namespace Novelist.Model
 		public string Title { get; set; }
 
 		/// <summary>
-		/// Gets or sets post details.
+		/// Gets or sets post content.
 		/// </summary>
 		/// <value>
-		/// Post details.
+		/// Post content.
 		/// </value>
 		[Required]
-		public string Details { get; set; }
+		public string Content { get; set; }
 
 		/// <summary>
 		/// Gets or sets post author.

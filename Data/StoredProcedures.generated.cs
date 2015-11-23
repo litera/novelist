@@ -34,12 +34,12 @@ namespace Novelist.Data
 		internal static partial class Post
 		{
 
-			public static Sql Create(int? authorId, string title, string details)
+			public static Sql Create(int? authorId, string title, string content)
 			{
-				Sql result = Sql.Builder.Append(";exec dbo.[Post_Create] @AuthorId, @Title, @Details", new {
+				Sql result = Sql.Builder.Append(";exec dbo.[Post_Create] @AuthorId, @Title, @Content", new {
 					AuthorId = authorId,
 					Title = title,
-					Details = details
+					Content = content
 				});
 
 				return result;

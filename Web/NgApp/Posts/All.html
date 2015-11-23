@@ -1,9 +1,13 @@
-﻿<main id="posts">
+﻿<ng-include src="::'/NgApp/General/Menu.html'"></ng-include>
+
+<main id="posts">
 	<article ng-repeat="post in context.model.posts">
-		<h1 ng-bind="::post.title"></h1>
+		<header>
+			<h1 ng-bind="::post.title"></h1>
+		</header>
+		<section class="content" ng-bind-html="::post.content"></section>
 		<footer>
 			<div><span ng-bind="::post.createdOn | moment"></span> by <span ng-bind="::post.author.name"></span></div>
 		</footer>
-		<section class="content" ng-bind-html="::post.details"></section>
 	</article>
 </main>

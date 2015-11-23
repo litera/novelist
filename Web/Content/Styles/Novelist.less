@@ -40,7 +40,7 @@ a {
 	text-decoration: none;
 }
 
-header {
+body > header {
 	position: fixed;
 	top: @textLeading;
 	left: @textLeading;
@@ -70,6 +70,10 @@ header {
 	}
 }
 
+aside {
+
+}
+
 main {
 	width: @contentWidth;
 	margin: @textLeading auto;
@@ -80,6 +84,9 @@ main {
 #posts {
 
 	article {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column;
 		margin: @textLeading * 3 0 0;
 		border-top: 5px solid @primary;
 
@@ -87,12 +94,12 @@ main {
 			border: 0 none;
 		}
 
-		footer {
-			//font-size: @textSize * .9;
-			color: @primary;
+		header {
+			order: 1;
 		}
 
 		.content {
+			order: 3;
 
 			.intro {
 				font-size: @textSize * 1.1;
@@ -110,6 +117,11 @@ main {
 				}
 			}
 		}
-	}
 
+		footer {
+			//font-size: @textSize * .9;
+			color: @primary;
+			order: 2;
+		}
+	}
 }

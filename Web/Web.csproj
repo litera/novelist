@@ -116,6 +116,9 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="NgApp\General\Filter.Moment.js" />
+    <Content Include="NgApp\General\Menu.Anonymous.html" />
+    <Content Include="NgApp\General\Menu.Authenticated.html" />
+    <Content Include="NgApp\General\Menu.html" />
     <Content Include="NgApp\General\Resource.Posts.js" />
     <Content Include="NgApp\Novelist.js" />
     <Content Include="NgApp\Posts\All.html" />

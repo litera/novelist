@@ -51,7 +51,7 @@ All these SPs are then translated to *Entity* classes with *Function* methods th
 ```csharp
 internal static partial class Post
 {
-	public static Sql Create(string title, string details, int authorId)
+	public static Sql Create(string title, string details, int? authorId)
 	{
 		// generated implementation
 	}

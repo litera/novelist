@@ -55,18 +55,18 @@ a {
   color: #0699c6;
   text-decoration: none;
 }
-header {
+body > header {
   position: fixed;
   top: 28px;
   left: 28px;
   font-style: italic;
 }
-header h1 {
+body > header h1 {
   display: inline;
   font-size: 42px;
   line-height: 56px;
 }
-header h1:before {
+body > header h1:before {
   display: inline-block;
   content: "N.";
   border: 3px solid #a7a37e;
@@ -77,7 +77,7 @@ header h1:before {
   line-height: 2rem;
   vertical-align: .5rem;
 }
-header h1 span {
+body > header h1 span {
   margin-left: 1px;
   color: #e6e2af;
 }
@@ -86,14 +86,20 @@ main {
   margin: 28px auto;
 }
 #posts article {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
   margin: 84px 0 0;
   border-top: 5px solid #e6e2af;
 }
 #posts article:first-child {
   border: 0 none;
 }
-#posts article footer {
-  color: #e6e2af;
+#posts article header {
+  order: 1;
+}
+#posts article .content {
+  order: 3;
 }
 #posts article .content .intro {
   font-size: 19.8px;
@@ -108,4 +114,8 @@ main {
   background-color: #e6e2af;
   margin: 0 18px -1px 0;
   border-bottom: 1px solid #a7a37e;
+}
+#posts article footer {
+  color: #e6e2af;
+  order: 2;
 }
