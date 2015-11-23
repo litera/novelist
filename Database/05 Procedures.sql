@@ -48,7 +48,8 @@ begin
 		u.Id, u.Name, u.Email
 	from dbo.Post p
 		join dbo.[User] u
-		on u.Id = p.AuthorId;
+		on u.Id = p.AuthorId
+	order by p.CreatedOn desc;
 end
 go
 grant execute on dbo.Post_GetAll to public;

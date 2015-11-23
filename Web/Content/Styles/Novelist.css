@@ -52,7 +52,8 @@ p {
   margin: 28px 0;
 }
 a {
-  color: #046380;
+  color: #0699c6;
+  text-decoration: none;
 }
 header {
   position: fixed;
@@ -82,14 +83,24 @@ header h1 span {
 }
 main {
   width: 800px;
-  margin: 84px auto;
+  margin: 28px auto;
 }
-article .intro {
+#posts article {
+  margin: 84px 0 0;
+  border-top: 5px solid #e6e2af;
+}
+#posts article:first-child {
+  border: 0 none;
+}
+#posts article footer {
+  color: #e6e2af;
+}
+#posts article .content .intro {
   font-size: 19.8px;
   font-weight: bold;
   text-indent: -32.4px;
 }
-article .intro:before {
+#posts article .content .intro:before {
   content: "";
   display: inline-block;
   width: 14.4px;

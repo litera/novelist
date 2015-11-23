@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="Novelist">
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 	<title>@ViewBag.Title - Novelist</title>
+	<base href="/" />
 	@* Default styles *@
 	@Styles.Render("~/bundles/css/general")
 	@* Additional per-page styles *@
@@ -14,12 +15,13 @@
 	<header>
 		<h1>Novel<span>ist</span>.</h1>
 	</header>
-	<section id="container">
+	<section id="container" ng-view>
 		@* Partials should contain aside and main elements here *@
 		@RenderBody()
 	</section>
 	@* Default scripts *@
-	@Scripts.Render("~/bundle/js/general")
+	@Scripts.Render("~/bundles/js/general")
+	@Scripts.Render("~/bundles/js/novelist")
 	@* Additional page scripts *@
 	@RenderSection("Scripts", false)
 </body>

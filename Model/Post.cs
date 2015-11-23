@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Novelist.Model
 {
@@ -47,6 +48,6 @@ namespace Novelist.Model
 		/// <value>
 		/// Post creation date.
 		/// </value>
-		public DataType CreatedOn { get; set; }
+		public DateTime CreatedOn { get; set; }
 	}
 }

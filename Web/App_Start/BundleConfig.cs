@@ -42,7 +42,15 @@ namespace Novelist.Web
 				.Include("~/Scripts/angular.js")
 				.Include("~/Scripts/angular-route.js")
 				.Include("~/Scripts/angular-resource.js")
-				.Include("~/Scripts/angular-sanitize.js"));
+				.Include("~/Scripts/angular-sanitize.js")
+				.Include("~/Scripts/moment.js"));
+
+			bundles.Add(new ScriptBundle("~/bundles/js/novelist")
+				.Include("~/NgApp/Novelist.js")
+				.IncludeDirectory("~/NgApp", "Filter.*", true)
+				.IncludeDirectory("~/NgApp", "Resource.*", true)
+				.IncludeDirectory("~/NgApp", "Service.*", true)
+				.IncludeDirectory("~/NgApp", "Controller.*", true));
 		}
 	}
 }

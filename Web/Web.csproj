@@ -115,6 +115,10 @@
       <DependentUpon>Variables.less</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="NgApp\General\Filter.Moment.js" />
+    <Content Include="NgApp\General\Resource.Posts.js" />
+    <Content Include="NgApp\Novelist.js" />
+    <Content Include="NgApp\Posts\All.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-resource.min.js" />
@@ -127,9 +131,14 @@
     <Content Include="Content\Styles\Novelist.css">
       <DependentUpon>Novelist.less</DependentUpon>
     </Content>
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\PostController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -155,6 +164,7 @@
     <Content Include="Content\Styles\Novelist.less" />
     <Content Include="Content\Styles\Mixins.less" />
     <Content Include="Content\Styles\Variables.less" />
+    <Content Include="NgApp\Posts\Controller.Posts.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,7 +173,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Api\" />
     <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>

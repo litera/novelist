@@ -19,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
 	max-width: 75%;
 }
 
-// #region Generate headers using recursive mixin
+// Generate headers using recursive mixin
 .genHeaders(@i) when (@i > 0) {
 	.genHeaders((@i - 1));
 
@@ -37,6 +37,7 @@ p {
 
 a {
 	color: @linkColor;
+	text-decoration: none;
 }
 
 header {
@@ -70,25 +71,45 @@ header {
 }
 
 main {
-	width: 800px;
-	margin: @textLeading * 3 auto;
+	width: @contentWidth;
+	margin: @textLeading auto;
 }
 
-article {
+// Individual pages included here for convenience
 
-	.intro {
-		font-size: @textSize * 1.1;
-		font-weight: bold;
-		text-indent: -@textSize * 1.8;
+#posts {
 
-		&:before {
-			content: "";
-			display: inline-block;
-			width: @textSize * .8;
-			height: @textSize * .8;
-			background-color: @primary;
-			margin: 0 @textSize -1px 0;
-			border-bottom: 1px solid @primaryDark;
+	article {
+		margin: @textLeading * 3 0 0;
+		border-top: 5px solid @primary;
+
+		&:first-child {
+			border: 0 none;
+		}
+
+		footer {
+			//font-size: @textSize * .9;
+			color: @primary;
+		}
+
+		.content {
+
+			.intro {
+				font-size: @textSize * 1.1;
+				font-weight: bold;
+				text-indent: -@textSize * 1.8;
+
+				&:before {
+					content: "";
+					display: inline-block;
+					width: @textSize * .8;
+					height: @textSize * .8;
+					background-color: @primary;
+					margin: 0 @textSize -1px 0;
+					border-bottom: 1px solid @primaryDark;
+				}
+			}
 		}
 	}
+
 }
