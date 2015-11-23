@@ -49,5 +49,14 @@ as
 
 All these SPs are then translated to *Entity* classes with *Function* methods that use strong type C# parameters semantically matching those of the stored procedure.
 ```csharp
-Post.Create(string title, string details, int authorId);
+internal static partial class Post
+{
+	public static Sql Create(string title, string details, int authorId)
+	{
+		// generated implementation
+	}
+	
+	...
+}
 ```
+Where `Sql` type is of NPoco library representing a SQL database call.
