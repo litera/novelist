@@ -48,6 +48,7 @@ namespace Novelist.Web
 			bundles.Add(new ScriptBundle("~/bundles/js/novelist")
 				.Include("~/NgApp/Novelist.js")
 				.IncludeDirectory("~/NgApp", "Filter.*", true)
+				.IncludeDirectory("~/NgApp", "Directive.*", true)
 				.IncludeDirectory("~/NgApp", "Resource.*", true)
 				.IncludeDirectory("~/NgApp", "Service.*", true)
 				.IncludeDirectory("~/NgApp", "Controller.*", true));

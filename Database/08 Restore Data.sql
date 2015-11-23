@@ -2,7 +2,7 @@
 
 set nocount on;
 
-print '';
+print char(10) + 'Restoring data:';
 declare @sql nvarchar(max) = '';
 
 print 'Checking data compatibility between backup and new schema.';

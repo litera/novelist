@@ -1,7 +1,8 @@
 set nocount on;
 
 /* Recreating data => drop Backup_x tables */
-print 'Static data: Purge Backup';
+print char(10) + 'Static data';
+
 declare @sql varchar(max) = '';
 
 select @sql = @sql + 'print ''Dropping backup table dbo.[' + o.name + ']'';drop table dbo.[' + o.name + '];'
@@ -14,8 +15,6 @@ order by o.create_date asc;
 exec(@sql);
 
 /* Add static predefined data */
-
-print 'Static data:';
 
 print 'Adding generic users'
 	insert dbo.[User] (Name, Email, SimpleHash)

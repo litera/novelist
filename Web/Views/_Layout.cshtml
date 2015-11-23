@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
 	<title>@ViewBag.Title - Novelist</title>
 	<base href="/" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	@* Default styles *@
 	@Styles.Render("~/bundles/css/general")
 	@* Additional per-page styles *@
@@ -13,12 +14,24 @@
 </head>
 <body>
 	<header>
-		<h1>Novel<span>ist</span>.</h1>
+		<h1><a href="/">Novel<span>ist</span>.</a></h1>
 	</header>
-	<section id="container" ng-view>
+	<aside>
+		<nav class="security" ng-controller="SecurityContextController as context" ng-cloak ng-switch="context.viewModel.isAuthenticated">
+			<menu ng-switch-when="false">
+				<li><a href="/login"><span>login</span></a></li>
+				<li><a href="/signup"><span>sign up</span></a></li>
+			</menu>
+			<menu ng-switch-when="true">
+				<li><span ng-bind="context.viewModel.name"></span></li>
+				<li><a href="" ng-click="context.logout()"><span>logout</span></a></li>
+			</menu>
+		</nav>
+	</aside>
+	<ng-view id="container">
 		@* Partials should contain aside and main elements here *@
 		@RenderBody()
-	</section>
+	</ng-view>
 	@* Default scripts *@
 	@Scripts.Render("~/bundles/js/general")
 	@Scripts.Render("~/bundles/js/novelist")

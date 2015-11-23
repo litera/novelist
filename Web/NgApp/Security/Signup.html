@@ -1,0 +1,16 @@
+﻿<main id="signup">
+	<h1>User signup</h1>
+	<p>
+		Please enter your information.
+	</p>
+	<form name="data" novalidate>
+		<input type="text" placeholder="display name" ng-model="context.viewModel.name" required autofocus />
+		<input type="email" placeholder="your email" ng-model="context.viewModel.email" required />
+		<input type="password" placeholder="your password" ng-model="context.viewModel.password" required />
+		<input type="password" placeholder="repeat your password" ng-model="context.viewModel.repeat" match-model="context.viewModel.password" required />
+		<p class="error" ng-bind="context.viewModel.error"></p>
+		<button disabled ng-click="context.submit()" ng-disabled="data.$invalid">
+			<span>submit and login</span>
+		</button>
+	</form>
+</main>

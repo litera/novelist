@@ -12,13 +12,30 @@
 
 	function Routing($routeProvider, $locationProvider) {
 		$routeProvider
-			.when("/", {
+			// content
+			.when("/posts", {
 				templateUrl: "/NgApp/Posts/All.html",
 				controller: "PostsController",
 				controllerAs: "context"
 			})
+			.when("/posts/new", {
+				templateUrl: "/NgApp/Posts/New.html",
+				controller: "NewPostController",
+				controllerAs: "context"
+			})
+			// security
+			.when("/login", {
+				templateUrl: "/NgApp/Security/Login.html",
+				controller: "LoginController",
+				controllerAs: "context"
+			})
+			.when("/signup", {
+				templateUrl: "/NgApp/Security/Signup.html",
+				controller: "SignupController",
+				controllerAs: "context"
+			})
 			.otherwise({
-				redirectTo: "/"
+				redirectTo: "/posts"
 			});
 
 		$locationProvider.html5Mode(true);

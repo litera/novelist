@@ -1,5 +1,8 @@
 ﻿@import url(https://fonts.googleapis.com/css?family=Exo:300,400,500,600,700,800,900,300italic,400italic,500italic,600italic,700italic,800italic,900italic|Noticia+Text:400,400italic,700,700italic&subset=latin,latin-ext);
 @import "../normalize.css";
+html {
+  font-size: 18px;
+}
 body {
   font-family: "Noticia Text", sans-serif;
   font-size: 18px;
@@ -55,6 +58,38 @@ a {
   color: #0699c6;
   text-decoration: none;
 }
+::-webkit-input-placeholder {
+  font-family: "Noticia Text", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  color: #e6e2af;
+}
+:-moz-placeholder {
+  font-family: "Noticia Text", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  color: #e6e2af;
+}
+::-moz-placeholder {
+  font-family: "Noticia Text", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  color: #e6e2af;
+}
+:-ms-input-placeholder {
+  font-family: "Noticia Text", sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  color: #e6e2af;
+}
+[ng\:cloak],
+[ng-cloak],
+[data-ng-cloak],
+[x-ng-cloak],
+.ng-cloak,
+.x-ng-cloak {
+  display: none !important;
+}
 body > header {
   position: fixed;
   top: 28px;
@@ -64,7 +99,6 @@ body > header {
 body > header h1 {
   display: inline;
   font-size: 42px;
-  line-height: 56px;
 }
 body > header h1:before {
   display: inline-block;
@@ -77,9 +111,41 @@ body > header h1:before {
   line-height: 2rem;
   vertical-align: .5rem;
 }
-body > header h1 span {
+body > header h1 a {
+  color: inherit;
+}
+body > header h1 a span {
   margin-left: 1px;
   color: #e6e2af;
+}
+nav menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav menu li {
+  margin: 0;
+  padding: 0;
+}
+nav menu li a {
+  color: #a7a37e;
+}
+nav menu li a:after {
+  content: "\20\bb";
+  color: #e6e2af;
+}
+nav menu.horizontal li {
+  display: inline-block;
+}
+aside nav.security {
+  position: fixed;
+  top: 84px;
+  left: calc(28px + 6px + 2rem + .25em);
+}
+aside nav.context {
+  position: fixed;
+  top: 28px;
+  right: 28px;
 }
 main {
   width: 800px;
@@ -118,4 +184,65 @@ main {
 #posts article footer {
   color: #e6e2af;
   order: 2;
+}
+#login h1,
+#signup h1 {
+  font-style: italic;
+  font-size: 42px;
+  margin-bottom: 0;
+}
+#login form input,
+#signup form input {
+  display: block;
+  margin: 28px 0;
+  outline: 0 none;
+  border: 1px solid #e6e2af;
+  border-width: 0 0 3px 0;
+  padding: 0 0 10px;
+  width: 50%;
+}
+#login form input.ng-dirty.ng-valid,
+#signup form input.ng-dirty.ng-valid {
+  border-color: #94ce69;
+}
+#login form input.ng-dirty.ng-invalid,
+#signup form input.ng-dirty.ng-invalid {
+  border-color: #fe7353;
+}
+#login form button,
+#signup form button {
+  font-family: "Exo", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+  background-color: #e6e2af;
+  outline: 0 none;
+  border: 3px solid #e6e2af;
+  border-radius: 5px;
+  padding: .5rem 2rem;
+  transition: all .25s;
+  cursor: pointer;
+}
+#login form button:hover,
+#signup form button:hover,
+#login form button:focus,
+#signup form button:focus {
+  border-color: #a7a37e;
+  color: #a7a37e;
+}
+#login form button:disabled,
+#signup form button:disabled {
+  background-color: #fff;
+  border-color: #a7a37e;
+  color: #a7a37e;
+  opacity: .25;
+  cursor: default;
+}
+#login form button:disabled:hover,
+#signup form button:disabled:hover {
+  color: #a7a37e;
+}
+#login form .error,
+#signup form .error {
+  color: #fe7353;
 }

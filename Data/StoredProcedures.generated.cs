@@ -66,6 +66,46 @@ namespace Novelist.Data
 
 		#endregion
 
+		#region User class
+
+		/// <summary>Defines all User related stored procedure calls.</summary>
+		internal static partial class User
+		{
+
+			public static Sql Authenticate(string email, int? hash)
+			{
+				Sql result = Sql.Builder.Append(";exec dbo.[User_Authenticate] @Email, @Hash", new {
+					Email = email,
+					Hash = hash
+				});
+
+				return result;
+			}
+
+			public static Sql Create(string name, string email, int? hash)
+			{
+				Sql result = Sql.Builder.Append(";exec dbo.[User_Create] @Name, @Email, @Hash", new {
+					Name = name,
+					Email = email,
+					Hash = hash
+				});
+
+				return result;
+			}
+
+			public static Sql Get(int? id, string email)
+			{
+				Sql result = Sql.Builder.Append(";exec dbo.[User_Get] @Id, @Email", new {
+					Id = id,
+					Email = email
+				});
+
+				return result;
+			}
+		}
+
+		#endregion
+
 	}   
 	 
 	#endregion  

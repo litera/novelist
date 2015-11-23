@@ -1,4 +1,4 @@
-print 'Create Model:';
+print char(10) + 'Create Model:';
 
 print 'Creating table User'
 	create table dbo.[User] (
@@ -6,7 +6,8 @@ print 'Creating table User'
 			identity
 			primary key,
 		Name nvarchar(100) not null,
-		Email nvarchar(250) not null,
+		Email nvarchar(250) not null
+			unique,
 		SimpleHash int not null,
 		CreatedOn datetime2 not null
 			default sysdatetime()

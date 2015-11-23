@@ -4,6 +4,10 @@
 @import "Mixins";
 @import "Variables";
 
+html {
+	font-size: @textSize; // = 1rem
+}
+
 body {
 	font-family: @textFamily;
 	font-size: @textSize;
@@ -14,7 +18,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: @headingFamily;
-	color: @primaryDark;
+	color: @primary;
 	margin: @textLeading 0 @textLeading * .5 0;
 	max-width: 75%;
 }
@@ -40,6 +44,34 @@ a {
 	text-decoration: none;
 }
 
+.placeholderSettings() {
+	// keep fonts settings for fields that use different fonts (i.e. password)
+	font-family: @textFamily;
+	font-weight: 300;
+	font-style: italic;
+	color: @secondary;
+}
+::-webkit-input-placeholder {
+	.placeholderSettings();
+}
+:-moz-placeholder {
+	.placeholderSettings();
+}
+::-moz-placeholder {
+	.placeholderSettings();
+}
+:-ms-input-placeholder {
+	.placeholderSettings();
+}
+//[placeholder]:not(input):empty:before {
+//	content: attr(placeholder);
+//	.placeholderSettings();
+//}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+	display: none !important;
+}
+
 body > header {
 	position: fixed;
 	top: @textLeading;
@@ -49,12 +81,11 @@ body > header {
 	h1 {
 		display: inline;
 		font-size: 42px;
-		line-height: @textLeading * 2;
 
 		&:before {
 			display: inline-block;
 			content: "N.";
-			border: 3px solid @primaryDark;
+			border: 3px solid @primary;
 			margin-right: .25em;
 			border-radius: 50%;
 			font-size: .5em;
@@ -63,15 +94,56 @@ body > header {
 			vertical-align: .5rem;
 		}
 
-		span {
-			margin-left: 1px;
-			color: @primary;
+		a {
+			color: inherit;
+			span {
+				margin-left: 1px;
+				color: @secondary;
+			}
+		}
+	}
+}
+
+nav {
+	menu {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			margin: 0;
+			padding: 0;
+
+			a {
+				color: @primary;
+
+				&:after {
+					content: "\20\bb";
+					color: @secondary;
+				}
+			}
+		}
+
+		&.horizontal {
+			li {
+				display: inline-block;
+			}
 		}
 	}
 }
 
 aside {
+	nav.security {
+		position: fixed;
+		top: @textLeading * 3;
+		left: calc(~`"@{textLeading} + 6px + 2rem + .25em"`);
+	}
 
+	nav.context {
+		position: fixed;
+		top: @textLeading;
+		right: @textLeading;
+	}
 }
 
 main {
@@ -88,7 +160,7 @@ main {
 		align-items: flex-start;
 		flex-direction: column;
 		margin: @textLeading * 3 0 0;
-		border-top: 5px solid @primary;
+		border-top: 5px solid @secondary;
 
 		&:first-child {
 			border: 0 none;
@@ -111,17 +183,83 @@ main {
 					display: inline-block;
 					width: @textSize * .8;
 					height: @textSize * .8;
-					background-color: @primary;
+					background-color: @secondary;
 					margin: 0 @textSize -1px 0;
-					border-bottom: 1px solid @primaryDark;
+					border-bottom: 1px solid @primary;
 				}
 			}
 		}
 
 		footer {
 			//font-size: @textSize * .9;
-			color: @primary;
+			color: @secondary;
 			order: 2;
+		}
+	}
+}
+
+#login, #signup {
+	h1 {
+		font-style: italic;
+		font-size: 42px;
+		margin-bottom: 0;
+	}
+
+	p {
+		//margin-top: 0;
+	}
+
+	form {
+		input {
+			display: block;
+			margin: @textLeading 0;
+			outline: 0 none;
+			border: 1px solid @secondary;
+			border-width: 0 0 3px 0;
+			padding: 0 0 10px;
+			width: 50%;
+
+			&.ng-dirty.ng-valid {
+				border-color: @colorValid;
+			}
+			&.ng-dirty.ng-invalid {
+				border-color: @colorInvalid;
+			}
+		}
+
+		button {
+			font-family: @headingFamily;
+			font-weight: 600;
+			color: #fff;
+			text-transform: capitalize;
+			background-color: @secondary;
+			outline: 0 none;
+			border: 3px solid @secondary;
+			border-radius: 5px;
+			padding: .5rem 2rem;
+			transition: all .25s;
+			cursor: pointer;
+
+			&:hover, &:focus {
+				border-color: @primary;
+				color: @primary;
+			}
+
+			&:disabled {
+				background-color: #fff;
+				border-color: @primary;
+				color: @primary;
+				opacity: .25;
+				cursor: default;
+
+				&:hover {
+					color: @primary;
+				}
+			}
+		}
+
+		.error {
+			color: @colorInvalid;
 		}
 	}
 }

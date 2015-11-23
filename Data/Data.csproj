@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IUserRepository.cs" />
     <Compile Include="PostRepository.cs" />
     <Compile Include="IPostRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>StoredProcedures.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

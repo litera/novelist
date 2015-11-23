@@ -1,0 +1,14 @@
+﻿<main id="login">
+	<h1>User login</h1>
+	<p>
+		Please enter your login credentials.
+	</p>
+	<form name="data" novalidate>
+		<input type="email" placeholder="your email" ng-model="context.viewModel.username" required autofocus />
+		<input type="password" placeholder="password" ng-model="context.viewModel.password" required />
+		<p class="error" ng-bind="context.viewModel.error"></p>
+		<button disabled ng-click="context.login()" ng-disabled="data.$invalid">
+			<span>login</span>
+		</button>
+	</form>
+</main>

@@ -40,7 +40,8 @@ namespace Novelist.Data
 			using (var db = this.GetDatabase())
 			{
 				return db
-					.Fetch<Post, User>(StoredProcedures.Post.Create(authorId,title,details))
+					// can't use SingleOrDefault because of nested objects
+					.Fetch<Post, User>(StoredProcedures.Post.Create(authorId, title, details))
 					.Single();
 			}
 		}
@@ -57,6 +58,7 @@ namespace Novelist.Data
 			using (var db = this.GetDatabase())
 			{
 				return db
+					// can't use SingleOrDefault because of nested objects
 					.Fetch<Post, User>(StoredProcedures.Post.Get(id))
 					.Single();
 			}

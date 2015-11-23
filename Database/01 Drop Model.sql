@@ -1,6 +1,7 @@
 -- Drop all user defined objects in reverse order they were created
 
-print 'Droping model:';
+print char(10) + 'Droping model:';
+
 declare @sql varchar(max) = '';
 
 with types (type, name) as

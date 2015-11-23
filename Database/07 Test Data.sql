@@ -1,6 +1,6 @@
 ﻿set nocount on;
 
-print 'Test data:';
+print char(10) + 'Test data:';
 
 print 'Adding generic test users'
 	insert dbo.[User] (Name, Email, SimpleHash)

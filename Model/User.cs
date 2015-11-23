@@ -31,6 +31,7 @@ namespace Novelist.Model
 		/// User email.
 		/// </value>
 		[Required]
+		[EmailAddress]
 		public string Email { get; set; }
 	}
 }

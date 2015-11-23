@@ -115,13 +115,20 @@
       <DependentUpon>Variables.less</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="NgApp\General\Directive.Autofocus.js" />
+    <Content Include="NgApp\General\Directive.MatchModel.js" />
     <Content Include="NgApp\General\Filter.Moment.js" />
-    <Content Include="NgApp\General\Menu.Anonymous.html" />
-    <Content Include="NgApp\General\Menu.Authenticated.html" />
     <Content Include="NgApp\General\Menu.html" />
-    <Content Include="NgApp\General\Resource.Posts.js" />
+    <Content Include="NgApp\Posts\Controller.NewPost.js" />
+    <Content Include="NgApp\Posts\Resource.Posts.js" />
     <Content Include="NgApp\Novelist.js" />
     <Content Include="NgApp\Posts\All.html" />
+    <Content Include="NgApp\Security\Controller.Login.js" />
+    <Content Include="NgApp\Security\Controller.SecurityContext.js" />
+    <Content Include="NgApp\Security\Controller.Signup.js" />
+    <Content Include="NgApp\Security\Login.html" />
+    <Content Include="NgApp\Security\Service.Security.js" />
+    <Content Include="NgApp\Security\Signup.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-resource.min.js" />
@@ -142,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\PostController.cs" />
+    <Compile Include="Api\SecurityController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -152,6 +160,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\UserCredentials.cs" />
+    <Compile Include="ViewModels\UserCreation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -177,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
