@@ -37,7 +37,7 @@ Entity_Function
 ```
 
 Where *Entity* is some application model entity (i.e. *Post*) and *Function* is something that we want to do related to this entity or entity set (i.e. *Create*).
-```tsql
+```sql
 create procedure Post_Create (
 	@Title nvarchar(200),
 	@Details nvarchar(max),
