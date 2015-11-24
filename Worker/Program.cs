@@ -35,6 +35,8 @@ namespace Worker
 				}
 			}
 			Console.WriteLine("Featurize completed on {0}", DateTime.Now.ToLocalTime());
+
+			return;
 		}
 	}
 }
