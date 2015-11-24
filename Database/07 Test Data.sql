@@ -5,7 +5,7 @@ print char(10) + 'Test data:';
 print 'Adding generic test users'
 	insert dbo.[User] (Name, Email, SimpleHash)
 	values
-		('Robert Koritnik', 'r@k.com', -198892813); -- password: koji
+		('Robert Koritnik', 'r@k.com', -198892813); -- password: koji (-1534804307 on AppHb)
 	declare @id int = scope_identity();
 
 print 'Adding few test posts'

@@ -29,8 +29,8 @@
 		// reset error
 		this.viewModel.error = null;
 
-		// sugnup user
-		this.$injected
+		// return sugnup user promise
+		return this.$injected
 			.securityService
 			.register(
 				this.viewModel.name,

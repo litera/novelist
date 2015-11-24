@@ -19,7 +19,7 @@ exec(@sql);
 print 'Adding generic users'
 	insert dbo.[User] (Name, Email, SimpleHash)
 	values
-		('Administrator', 'admin@novelist.com', -871874097),	-- password: admin
-		('Demonstrator', 'demo@novelist.com', -111691625);				-- password: demo
+		('Administrator', 'admin@novelist.com', -871874097),	-- password: admin (1156371652 on AppHb)
+		('Demonstrator', 'demo@novelist.com', -111691625);		-- password: demo (1209474165 in AppHb)
 
 set nocount off;

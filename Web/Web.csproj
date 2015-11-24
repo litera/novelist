@@ -116,6 +116,7 @@
     </Content>
     <Content Include="Global.asax" />
     <Content Include="NgApp\General\Directive.Autofocus.js" />
+    <Content Include="NgApp\General\Directive.ClickAsync.js" />
     <Content Include="NgApp\General\Directive.Elastic.js" />
     <Content Include="NgApp\General\Directive.MatchModel.js" />
     <Content Include="NgApp\General\Filter.Moment.js" />

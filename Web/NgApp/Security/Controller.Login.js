@@ -27,8 +27,9 @@
 		// reset error
 		this.viewModel.error = null;
 
-		// login user
-		this.$injected
+		// return login user promise
+		return this
+			.$injected
 			.securityService
 			.login(
 				this.viewModel.username,

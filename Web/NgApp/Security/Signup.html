@@ -9,7 +9,7 @@
 		<input type="password" placeholder="your password" ng-model="context.viewModel.password" required />
 		<input type="password" placeholder="repeat your password" ng-model="context.viewModel.repeat" match-model="context.viewModel.password" required />
 		<p class="error" ng-bind="context.viewModel.error" ng-if="context.viewModel.error"></p>
-		<button disabled ng-click="context.submit()" ng-disabled="data.$invalid">
+		<button disabled ng-click-async="context.submit()" ng-disabled="data.$invalid">
 			<span>submit and login</span>
 		</button>
 	</form>
