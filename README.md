@@ -73,3 +73,9 @@ internal static partial class Post
 }
 ```
 Where `Sql` type is of NPoco library representing a SQL database call.
+
+### Web worker
+
+There's also a *background* web worker implemented as part of the same Web application. It works autonomously of the web application so it doesn't rely on client web requests. This is accomplished through `HostingEnvironment` registration and by using `Timer` object that spawns a new thread. Web application is only responsible of starting up this web worker when it bootstraps itself up.
+
+Web worker executes once every minute and *marks* one of the posts as *featured*. Featured post can be observed in the web application as it's always **the first** on the list of posts. So if you wait about a minute and refresh posts page it it likely that a new post will be displayed on the first position. Due to random selection it may also happen that the same post gets featured as it was in the previous minute.
