@@ -151,3 +151,26 @@ go
 	go
 	grant execute on dbo.Post_Create to public;
 	go
+
+
+print 'Creating procedure Post_Featurize'
+go
+	create procedure dbo.Post_Featurize
+	as
+	begin
+		declare @max int;
+
+		-- get maximum Id
+		select @max = max(Id)
+		from dbo.Post;
+
+		-- generate random number
+		declare @rand int = cast(rand() * @max + 1 as int);
+
+		-- update posts by featuring one of them
+		update dbo.Post
+		set IsFeatured = case when @rand = Id then 1 else 0 end;
+	end
+	go
+	grant execute on dbo.Post_Featurize to public;
+	go
