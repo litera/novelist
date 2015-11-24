@@ -121,7 +121,7 @@ go
 		from dbo.Post p
 			join dbo.[User] u
 			on u.Id = p.AuthorId
-		order by p.CreatedOn desc;
+		order by p.IsFeatured desc, p.CreatedOn desc;
 	end
 	go
 	grant execute on dbo.Post_GetAll to public;

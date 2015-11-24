@@ -74,7 +74,7 @@ namespace Novelist.Web.Api
 			// generate headings
 			content = Regex.Replace(
 				content,
-				@"^(?<heading>#+)(?<text>\s+\w+.*)$",
+				@"^[ ]*(?<heading>#+)(?<text>\s+\w+.*)$",
 				new MatchEvaluator(match => {
 					int count = Math.Min(6, Math.Max(2, match.Groups["heading"].Value.Length));
 					return string.Format("<h{0}>{1}</h{0}>", count, match.Groups["text"].Value);

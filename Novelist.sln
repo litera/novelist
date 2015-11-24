@@ -27,6 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{98
 		Database\Local DB - Recreate.cmd = Database\Local DB - Recreate.cmd
 		Database\Local DB - Restore.cmd = Database\Local DB - Restore.cmd
 		Database\Local DB - Upgrade.cmd = Database\Local DB - Upgrade.cmd
+		Database\Prod DB - Recreate.cmd = Database\Prod DB - Recreate.cmd
 		Database\Prod DB - Upgrade.cmd = Database\Prod DB - Upgrade.cmd
 	EndProjectSection
 EndProject

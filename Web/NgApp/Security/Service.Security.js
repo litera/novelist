@@ -128,6 +128,8 @@
 	function persistUser(userInstance) {
 		if (userInstance)
 		{
+			// oldschool cross page-refresh client session hack
+			// is ok for the purpose of this app
 			window.name = "Novelist:" + window.JSON.stringify(userInstance);
 			return;
 		}

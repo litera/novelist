@@ -23,6 +23,8 @@ print 'Creating table Post';
 		Content nvarchar(max) not null,
 		AuthorId int not null
 			references dbo.[User](Id),
+		IsFeatured bit null
+			default 0,
 		CreatedOn datetime2 not null
 			default sysdatetime()
 	)
