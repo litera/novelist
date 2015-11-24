@@ -6,13 +6,14 @@
 		.main
 		.controller("NewPostController", NewPostController);
 
-	NewPostController.$inject = ["securityService", "postsResource", "$location"];
+	NewPostController.$inject = ["securityService", "postsResource", "$location", "$q"];
 
-	function NewPostController(securityService, postsResource, $location) {
+	function NewPostController(securityService, postsResource, $location, $q) {
 		this.$injected = {
 			securityService: securityService,
 			postsResource: postsResource,
-			$location: $location
+			$location: $location,
+			$q: $q
 		};
 
 		this.viewModel = {
@@ -31,7 +32,7 @@
 
 		if (this.$injected.securityService.isAuthenticated)
 		{
-			this.$injected
+			return this.$injected
 				.postsResource
 				.save({
 					author: this.$injected.securityService.user,
@@ -49,6 +50,8 @@
 				});
 		}
 
+		// return a resolved promise
+		return this.$injected.$q.when(true);
 	};
 
 })(angular);
