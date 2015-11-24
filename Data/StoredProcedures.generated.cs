@@ -1,8 +1,5 @@
-﻿using System;
-using System.CodeDom.Compiler;
+﻿using System.CodeDom.Compiler;
 using System.Collections.Generic;
-using System.Data; 
-using System.Data.SqlClient; 
 using Microsoft.SqlServer.Server;
 using NPoco;
 
@@ -40,6 +37,15 @@ namespace Novelist.Data
 					AuthorId = authorId,
 					Title = title,
 					Content = content
+				});
+
+				return result;
+			}
+
+			public static Sql Featurize()
+			{
+				Sql result = Sql.Builder.Append(";exec dbo.[Post_Featurize] ", new {
+					
 				});
 
 				return result;

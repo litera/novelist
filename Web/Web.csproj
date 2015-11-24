@@ -157,8 +157,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\WebWorker.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="General\AbsoluteUrlTransform.cs" />
+    <Compile Include="General\WorkerTask.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

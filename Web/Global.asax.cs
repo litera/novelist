@@ -17,6 +17,9 @@ namespace Novelist.Web
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+			// initialize web worker thread
+			WebWorker.Start();
 		}
 	}
 }
