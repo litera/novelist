@@ -5,13 +5,26 @@ This is a simplified example of a blog-like application built on top of followin
 - **AngularJS** (core, routing, resources and sanitize)
 - **Asp.net MVC** and **Asp.net WebAPI**,
 - **LESS** syntax styles
-- **NPoco micro ORM** on
+- **NPoco micro ORM** for DAL
 - **SQL Database**
 - **T4** Visual Studio's automated code generation templating
 
-It does just basic things, but should do those nicely.
+This application does just basic things, but should do those nicely. Don't expect it to be super robust as it's a proof of concept app.
 
-### Projects
+### Things to note
+
+1. Authentication is very rudimentary and completely stateless from server's perspective. Once the user authenticates (via WebAPI call to get user data based on credentials), user info is preserved on the client and accessible through custom AngularJS `securityService` instance.
+2. Client-side input validation is implemented using AngularJS
+3. Post editor support extremely rudimentary formatting using regular expressions so it is possible to at least create paragraphs and headings (h2..h6)
+
+    * To **create a heading** start your line with a # (1-6), space and heading text and whole line will become a header with level defined by number of # characters at front although h1 is not allowed in content and will be converted to h2;
+    * To **create a paragraph**, you should enter an empty line between individual text blocks (double enter); You can enter several empty lines and they will be regarded as a single empty line, so no empty paragraphs should be created
+
+4. There is no paging in all posts view
+5. Errors are usually very unspecified in th UI, but in the most important parts, actual erroneous responses from the server are logged into console window, so they can be investigated further
+6. Non-trivial Angular assets (controllers, services) are written as **true Javascript prototypes** which may seem unusual, but they provide several benefits on large apps where controllers can be inherited; Their injections are manually made available to prototype functions, but this could be automated with a more sophisticated code not shown in this project
+
+### Code projects
 
 There are basically **three C# projects** in this solution:
 

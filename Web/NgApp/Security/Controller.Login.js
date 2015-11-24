@@ -24,6 +24,10 @@
 	LoginController.prototype.login = function () {
 		var self = this;
 
+		// reset error
+		this.viewModel.error = null;
+
+		// login user
 		this.$injected
 			.securityService
 			.login(

@@ -61,25 +61,27 @@ a {
 ::-webkit-input-placeholder {
   font-family: "Noticia Text", sans-serif;
   font-weight: 300;
-  font-style: italic;
   color: #e6e2af;
 }
 :-moz-placeholder {
   font-family: "Noticia Text", sans-serif;
   font-weight: 300;
-  font-style: italic;
   color: #e6e2af;
 }
 ::-moz-placeholder {
   font-family: "Noticia Text", sans-serif;
   font-weight: 300;
-  font-style: italic;
   color: #e6e2af;
 }
 :-ms-input-placeholder {
   font-family: "Noticia Text", sans-serif;
   font-weight: 300;
-  font-style: italic;
+  color: #e6e2af;
+}
+[placeholder]:not(input):empty:before {
+  content: attr(placeholder);
+  font-family: "Noticia Text", sans-serif;
+  font-weight: 300;
   color: #e6e2af;
 }
 [ng\:cloak],
@@ -137,6 +139,34 @@ nav menu li a:after {
 nav menu.horizontal li {
   display: inline-block;
 }
+form button {
+  font-family: "Exo", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  text-transform: capitalize;
+  background-color: #e6e2af;
+  outline: 0 none;
+  border: 3px solid #e6e2af;
+  border-radius: 5px;
+  padding: .5rem 2rem;
+  transition: all .25s;
+  cursor: pointer;
+}
+form button:hover,
+form button:focus {
+  border-color: #a7a37e;
+  color: #a7a37e;
+}
+form button:disabled {
+  background-color: #fff;
+  border-color: #a7a37e;
+  color: #a7a37e;
+  opacity: .25;
+  cursor: default;
+}
+form button:disabled:hover {
+  color: #a7a37e;
+}
 aside nav.security {
   position: fixed;
   top: 84px;
@@ -150,6 +180,9 @@ aside nav.context {
 main {
   width: 800px;
   margin: 28px auto;
+}
+.error {
+  color: #fe7353;
 }
 #posts article {
   display: flex;
@@ -209,40 +242,52 @@ main {
 #signup form input.ng-dirty.ng-invalid {
   border-color: #fe7353;
 }
-#login form button,
-#signup form button {
-  font-family: "Exo", sans-serif;
-  font-weight: 600;
-  color: #fff;
-  text-transform: capitalize;
-  background-color: #e6e2af;
+#create form {
+  margin: 28px 0;
+  /*[placeholder]:not(input):empty:before {
+			content: attr(placeholder);
+			.placeholderSettings();
+		}*/
+}
+#create form [name] {
+  display: block;
+  width: 100%;
   outline: 0 none;
-  border: 3px solid #e6e2af;
-  border-radius: 5px;
-  padding: .5rem 2rem;
-  transition: all .25s;
-  cursor: pointer;
+  border: 0 none;
+  padding: 0;
+  resize: none;
 }
-#login form button:hover,
-#signup form button:hover,
-#login form button:focus,
-#signup form button:focus {
-  border-color: #a7a37e;
+#create form [name="title"] {
+  font-family: "Exo", sans-serif;
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 54px;
   color: #a7a37e;
+  margin: 28px 0 14px 0;
+  height: 54px;
+  overflow: hidden;
 }
-#login form button:disabled,
-#signup form button:disabled {
-  background-color: #fff;
-  border-color: #a7a37e;
-  color: #a7a37e;
-  opacity: .25;
-  cursor: default;
+#create form [name="title"]::-webkit-input-placeholder {
+  font-family: "Exo", sans-serif;
+  font-weight: 900;
 }
-#login form button:disabled:hover,
-#signup form button:disabled:hover {
-  color: #a7a37e;
+#create form [name="title"]:-moz-placeholder {
+  font-family: "Exo", sans-serif;
+  font-weight: 900;
 }
-#login form .error,
-#signup form .error {
-  color: #fe7353;
+#create form [name="title"]::-moz-placeholder {
+  font-family: "Exo", sans-serif;
+  font-weight: 900;
+}
+#create form [name="title"]:-ms-input-placeholder {
+  font-family: "Exo", sans-serif;
+  font-weight: 900;
+}
+#create form [name="intro"] {
+  font-size: 19.8px;
+  font-weight: bold;
+  height: 28px;
+}
+#create form [name="content"] {
+  height: 28px;
 }

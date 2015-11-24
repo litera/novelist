@@ -1,0 +1,17 @@
+﻿<main id="create">
+	<article>
+		<form name="data" novalidate>
+			<textarea name="title" placeholder="content title" ng-model="context.viewModel.title" required autofocus elastic></textarea>
+			<p>
+				<textarea name="intro" placeholder="brief post intro" ng-model="context.viewModel.intro" required elastic></textarea>
+			</p>
+			<p>
+				<textarea name="content" placeholder="remaining content" ng-model="context.viewModel.content" required elastic></textarea>
+			</p>
+			<p class="error" ng-bind="context.viewModel.error" ng-if="context.viewModel.error"></p>
+			<button disabled ng-click="context.publish()" ng-disabled="data.$invalid">
+				<span>Publish</span>
+			</button>
+		</form>
+	</article>
+</main>

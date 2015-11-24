@@ -3,7 +3,7 @@
 <main id="posts">
 	<article ng-repeat="post in context.model.posts">
 		<header>
-			<h1 ng-bind="::post.title"></h1>
+			<h1 ng-bind-html="::post.title"></h1>
 		</header>
 		<section class="content" ng-bind-html="::post.content"></section>
 		<footer>

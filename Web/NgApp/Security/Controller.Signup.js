@@ -18,13 +18,18 @@
 			name: null,
 			email: null,
 			password: null,
-			repeat: null
+			repeat: null,
+			error: null
 		};
 	}
 
 	SignupController.prototype.submit = function () {
 		var self = this;
 
+		// reset error
+		this.viewModel.error = null;
+
+		// sugnup user
 		this.$injected
 			.securityService
 			.register(

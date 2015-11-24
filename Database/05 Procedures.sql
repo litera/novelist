@@ -146,7 +146,7 @@ go
 		declare @postId int = scope_identity();
 
 		-- return newly created post
-		exec @PostId = @postId;
+		exec dbo.Post_Get @PostId = @postId;
 	end
 	go
 	grant execute on dbo.Post_Create to public;
