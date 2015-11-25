@@ -1,5 +1,7 @@
 # Novelist
 
+[![Join the chat at https://gitter.im/litera/novelist](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/litera/novelist?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This is a simplified example of a blog-like application built on top of following libraries and technologies:
 
 - **AngularJS** (core, routing, resources and sanitize)
