@@ -27,8 +27,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{98
 		Database\Local DB - Recreate.cmd = Database\Local DB - Recreate.cmd
 		Database\Local DB - Restore.cmd = Database\Local DB - Restore.cmd
 		Database\Local DB - Upgrade.cmd = Database\Local DB - Upgrade.cmd
-		Database\Prod DB - Recreate.cmd = Database\Prod DB - Recreate.cmd
-		Database\Prod DB - Upgrade.cmd = Database\Prod DB - Upgrade.cmd
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{DD8F9662-DF9C-4A0E-85EA-0F00F162D739}"

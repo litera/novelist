@@ -9,7 +9,7 @@ namespace Novelist.Web.General
 	/// </summary>
 	public class WorkerTask : IRegisteredObject
 	{
-		private static readonly SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["NovelistDBConnection"].ConnectionString);
+		private static readonly SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["NovelistSQLConnection"].ConnectionString);
 		private static readonly SqlCommand comm = new SqlCommand(";exec dbo.Post_Featurize", conn);
 
 		private static readonly object threadLock = new object();

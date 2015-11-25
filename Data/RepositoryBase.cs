@@ -8,7 +8,7 @@ namespace Novelist.Data
 	/// </summary>
 	public abstract class RepositoryBase
 	{
-		private const string connectionName = "NovelistDBConnection";
+		private const string connectionName = "NovelistSQLConnection";
 
 		/// <summary>
 		/// Gets a disposable database instance.
